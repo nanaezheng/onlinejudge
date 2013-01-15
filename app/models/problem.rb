@@ -12,12 +12,12 @@ class Problem < ActiveRecord::Base
     "#{id}. #{name}"
   end
 
-  ATTRS = [:code, :name, :task, :test_count, :time_limit, :memory_limit]
+  @@ATTRIBUTES = [:code, :name, :task, :test_count, :time_limit, :memory_limit]
 
   def build_from_json!(json)
     data = JSON.parse(json).symbolize_keys!
-    ATTRS.each do |attr|
-      self[attr] = data[attr]
+    @@ATTRIBUTES.each do |attr|
+      self[attr] = data[attr] if data.has_key?(attr)
     end
     save
   end

@@ -15,13 +15,22 @@ class Submission < ActiveRecord::Base
     "Default"
   end
 
-  ATTRS = [:status, :report]
+  @@ATTRIBUTES = [:status, :report]
 
   def build_from_json!(json)
     data = JSON.parse(json).symbolize_keys!
-    ATTRS.each do |attr|
+    @@ATTRIBUTES.each do |attr|
       self[attr] = data[attr] if data.has_key?(attr)
     end
     save
+  end
+
+  before_save :set_default 
+
+  private
+
+  def set_default
+    self.status ||= 0
+    self.report ||= ''
   end
 end
