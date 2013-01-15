@@ -1,0 +1,14 @@
+<%- model_class = Problem -%>
+<%= grid @problems do |g|
+  g.column name: '#' do |problem|
+    problem.id
+  end
+
+  g.column name: 'Problem name' do |problem|
+    link_to problem.name, problem
+  end
+
+  g.column name: 'Time limit  / memory limit', :class => "muted" do |problem|
+    "#{problem.time_limit} ms / #{problem.memory_limit} MB"
+  end
+end -%>

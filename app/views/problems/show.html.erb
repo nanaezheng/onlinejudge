@@ -1,0 +1,8 @@
+<%- model_class = Problem -%>
+
+<div>
+<%= sanitize @problem.task %>
+</div>
+
+<%= link_to "Submit", submit_problem_path(@problem), :class => "btn btn-primary" %>
+<%= link_to "Back to problem set", :problems, :class => "btn" %>

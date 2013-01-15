@@ -1,0 +1,26 @@
+<%- model_class = Submission -%>
+<%= grid @submissions do |g|
+  g.column name: '#' do |submission|
+    submission.id
+  end
+
+  g.column name: 'Problem name' do |submission|
+    link_to submission.problem.name, submission.problem
+  end
+
+  g.column name: 'Verdict' do |submission|
+    link_to submission.verdict, submission
+  end
+
+  g.column name: 'Language' do |submission|
+    submission.language
+  end
+
+  g.column name: 'Author' do |submission|
+    submission.user.nickname
+  end
+
+  g.column name: 'Since' do |submission|
+    time_ago_in_words submission.created_at
+  end
+end -%>

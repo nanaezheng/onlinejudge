@@ -1,0 +1,15 @@
+<h2>Submit solution</h2>
+<%= simple_form_for @submission, :html => {:class => "form-horizontal"} do |f| %>
+  <div class="form-inputs">
+    <%= f.input :user_id, :value => @submission.user.id, as: :hidden %>
+    <%= f.input :user, :disabled => true %>
+
+    <%= f.input :problem_id, :value => @submission.problem.id, as: :hidden %>
+    <%= f.input :problem, :disabled => true %>
+
+    <%= f.input :source, :input_html => {:rows => 10}%>
+  </div>
+
+  <%= f.button :submit, "Submit", :class => "btn-primary" %>
+  <%= link_to "Back to problem", :problem, :class => "btn" %>
+<% end %>
