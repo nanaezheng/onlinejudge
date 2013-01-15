@@ -26,7 +26,7 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find_by_id(params[:id])
     if @problem.nil? 
-      redirect_to :problems, :flash => { :error => "Problem with id `#{params[:id]}` does not exsits." }
+      redirect_to :problems, :flash => { :error => "No such problem." }
     else
       respond_to do |format|
         format.html # show.html.erb
