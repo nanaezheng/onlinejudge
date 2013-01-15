@@ -34,8 +34,6 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(params[:submission])
-    @submission[:status] = 0
-    @submission[:report] = ""
 
     respond_to do |format|
       if @submission.save
