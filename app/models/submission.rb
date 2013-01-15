@@ -8,7 +8,18 @@ class Submission < ActiveRecord::Base
   validates :user_id, :presence => true
 
   def verdict
-    %w(Pening Running Accepted CompileError WrongAnswer RuntimeError TimeLimitExceed MemoryLimitExceed)[self.status]
+    ["Pending",
+     "Running",
+     "Accepted",
+     "Compile Error",
+     "Wrong Answer", 
+     "Runtime Error",
+     "Time Limit Exceed",
+     "Memory Limit Exceed"][self.status]
+  end
+
+  def verdict=(v)
+    self.status = %w(WT RUN AC CE WA RE TLE MLE).index(v)
   end
 
   @@ATTRIBUTES = [:status, :report]
