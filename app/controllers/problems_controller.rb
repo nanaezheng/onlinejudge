@@ -26,7 +26,8 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find_by_id(params[:id])
     if @problem.nil? 
-      redirect_to :problems, :flash => { :error => "No such problem." }
+      redirect_to :problems, 
+                  :flash => { :error => "No such problem." }
     else
       respond_to do |format|
         format.html # show.html.erb
@@ -56,15 +57,14 @@ class ProblemsController < ApplicationController
   def submit
     @problem = Problem.find_by_id(params[:id])
     if @problem.nil? 
-      redirect_to :problems, :flash => { :error => "Problem with id `#{params[:id]}` does not exsits." }
-      return
-    end
-    @submission = Submission.new
-    @submission.user = current_user
-    @submission.problem = @problem
-    @submission.language = 1
-    respond_to do |format|
-      format.html 
+      redirect_to :problems, 
+                  :flash => { :error => "No such problem." }
+    else
+      @submission = Submission.new(:user => current_user, 
+                                   :problem => @problem)
+      respond_to do |format|
+        format.html 
+      end
     end
   end
 end
