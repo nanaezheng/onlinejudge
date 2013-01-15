@@ -12,10 +12,6 @@
     link_to submission.verdict, submission
   end
 
-  g.column name: 'Language' do |submission|
-    submission.language
-  end
-
   g.column name: 'Author' do |submission|
     submission.user.nickname
   end

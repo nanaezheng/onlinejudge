@@ -11,10 +11,6 @@ class Submission < ActiveRecord::Base
     %w(Pening Running Accepted CompileError WrongAnswer RuntimeError TimeLimitExceed MemoryLimitExceed)[self.status]
   end
 
-  def language
-    "Default"
-  end
-
   @@ATTRIBUTES = [:status, :report]
 
   def build_from_json!(json)
