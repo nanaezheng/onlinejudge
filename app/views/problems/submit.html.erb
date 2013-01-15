@@ -7,9 +7,11 @@
     <%= f.input :problem_id, :value => @submission.problem.id, as: :hidden %>
     <%= f.input :problem, :disabled => true %>
 
-    <%= f.input :source, :input_html => {:rows => 10}%>
+    <%= f.input :source, :input_html => {:rows => 15, :class => "span8"}%>
   </div>
 
-  <%= f.button :submit, "Submit", :class => "btn-primary" %>
-  <%= link_to "Back to problem", :problem, :class => "btn" %>
+  <div class="form-actions">
+    <%= f.button :submit, "Submit", :class => "btn-primary" %>
+    <%= link_to "Back to problem", :problem, :class => "btn" %>
+  </div>
 <% end %>
