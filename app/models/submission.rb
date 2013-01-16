@@ -19,16 +19,13 @@ class Submission < ActiveRecord::Base
   end
 
   def verdict=(v)
-    self.status = %w(WT RUN AC CE WA RE TLE MLE).index(v)
+    self.status = %w(WT RUN OK CE WA RE TLE MLE).index(v)
   end
-
-  @@ATTRIBUTES = [:status, :report]
 
   def build_from_json!(json)
     data = JSON.parse(json).symbolize_keys!
-    @@ATTRIBUTES.each do |attr|
-      self[attr] = data[attr] if data.has_key?(attr)
-    end
+    self.verdict = data[:verdict]
+    self.report = data[:report]
     save
   end
 
