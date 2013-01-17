@@ -2,8 +2,8 @@ class Problem < ActiveRecord::Base
   attr_accessible :code, :memory_limit, :name, :task, :test_count, :time_limit, :submissions
 
   validates :code, :presence => true, :uniqueness => true
-  validates :test_count, :presence => true
-  validates :time_limit, :presence => true
+  #validates :test_count, :presence => true
+  #validates :time_limit, :presence => true
   validates :memory_limit, :presence => true
 
   has_many :submissions
