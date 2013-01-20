@@ -56,6 +56,7 @@ class ProblemsController < ApplicationController
 
   def submit
     @problem = Problem.find_by_id(params[:id])
+
     if @problem.nil? 
       redirect_to :problems, 
                   :flash => { :error => "No such problem." }

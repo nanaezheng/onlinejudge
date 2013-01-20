@@ -7,6 +7,8 @@
     <%= f.input :problem_id, :value => @submission.problem.id, as: :hidden %>
     <%= f.input :problem, :disabled => true %>
 
+    <%= f.input :language_name, :selected => "GNU C++", :collection => ["GNU C++", "Free Pascal"] %>
+
     <%= f.input :source, :input_html => {:rows => 15, :class => "span8"}%>
   </div>
 

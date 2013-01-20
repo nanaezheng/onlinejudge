@@ -1,5 +1,5 @@
 class Submission < ActiveRecord::Base
-  attr_accessible :problem_id, :source, :user_id, :problem, :user, :status, :report
+  attr_accessible :problem_id, :source, :user_id, :language, :language_name, :problem, :user, :status, :report
 
   belongs_to :user
   belongs_to :problem
@@ -20,6 +20,16 @@ class Submission < ActiveRecord::Base
 
   def verdict=(v)
     self.status = %w(WT RUN OK CE WA RE TLE MLE).index(v)
+  end
+
+  @@LANGUAGES = ["GNU C++", "Free Pascal"]
+
+  def language_name
+    @@LANGUAGES[self.language || 0]
+  end
+
+  def language_name=(l)
+    self.language = ["GNU C++", "Free Pascal"].index(l)
   end
 
   def build_from_json!(json)
