@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(:version => 20130114123151) do
     t.string   "code"
     t.integer  "time_limit"
     t.text     "task"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "problems", ["code"], :name => "index_problems_on_code"

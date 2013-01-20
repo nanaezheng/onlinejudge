@@ -3,8 +3,8 @@ class Problem < ActiveRecord::Base
 
   validates :code, :presence => true, :uniqueness => true
   #validates :test_count, :presence => true
-  #validates :time_limit, :presence => true
-  validates :memory_limit, :presence => true
+  validates :time_limit, :presence => true
+  #validates :memory_limit, :presence => true
 
   has_many :submissions
 
