@@ -4,7 +4,7 @@
 </div>
 
 <div>
-  <%= sanitize @submission.report %>
+  <%= sanitize @submission.report, :tags => %w(table tr td) %>
 </div>
 
 <div>
