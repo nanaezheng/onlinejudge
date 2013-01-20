@@ -11,6 +11,7 @@ gem 'wice_grid'
 gem 'devise'
 
 gem 'mathjax-rails'
+gem 'activeadmin'
 
 gem 'thin'
 
