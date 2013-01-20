@@ -4,7 +4,6 @@ class CreateProblems < ActiveRecord::Migration
       t.string :name
       t.string :code
       t.integer :time_limit
-      t.integer :memory_limit
       t.text :task
 
       t.timestamps

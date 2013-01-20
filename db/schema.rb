@@ -16,9 +16,7 @@ ActiveRecord::Schema.define(:version => 20130114123151) do
   create_table "problems", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.integer  "test_count"
     t.integer  "time_limit"
-    t.integer  "memory_limit"
     t.text     "task"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false

@@ -1,5 +1,5 @@
 class Problem < ActiveRecord::Base
-  attr_accessible :code, :memory_limit, :name, :task, :test_count, :time_limit, :submissions
+  attr_accessible :code, :name, :task, :time_limit, :submissions
 
   validates :code, :presence => true, :uniqueness => true
   #validates :test_count, :presence => true
@@ -12,7 +12,7 @@ class Problem < ActiveRecord::Base
     "#{id}. #{name}"
   end
 
-  @@ATTRIBUTES = [:code, :name, :task, :test_count, :time_limit, :memory_limit]
+  @@ATTRIBUTES = [:code, :name, :task, :time_limit]
 
   def build_from_json!(json)
     data = JSON.parse(json).symbolize_keys!
