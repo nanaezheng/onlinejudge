@@ -10,6 +10,8 @@ gem 'wice_grid'
 
 gem 'devise'
 
+gem 'mathjax-rails'
+
 gem 'thin'
 
 group :assets do

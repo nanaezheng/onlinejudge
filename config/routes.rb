@@ -1,4 +1,6 @@
 LepusServer::Application.routes.draw do
+  mathjax 'mathjax'
+
   resources :submissions
 
   resources :problems do
