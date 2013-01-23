@@ -4,8 +4,9 @@ LepusServer::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   mathjax 'mathjax'
-
   resources :submissions
+
+  match 'problems', :controller => 'problems', :action => 'change', :method => :post
 
   resources :problems do
     member do

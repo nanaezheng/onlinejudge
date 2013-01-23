@@ -4,6 +4,8 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:submit]
   before_filter :require_authorized_key, :only => [:create, :update]
 
+  before_filter :authenticate_key!, :only => [:change]
+
   # GET /problems
   # GET /problems.json
   def index
@@ -54,6 +56,16 @@ class ProblemsController < ApplicationController
     end
   end
 
+  def change
+    problem = Problem.find_by_code(params[:problem][:code])
+    if problem.nil? 
+      Problem.create!(params[:problem])
+    else
+      problem.update_attributes(params[:problem])
+    end
+    head :ok
+  end
+
   def submit
     @problem = Problem.find_by_id(params[:id])
 
@@ -66,6 +78,13 @@ class ProblemsController < ApplicationController
       respond_to do |format|
         format.html 
       end
+    end
+  end
+
+  private
+  def authenticate_key!
+    JSON.parse(params[:json_data]).each do |k, v|
+      params[k] = v
     end
   end
 end
