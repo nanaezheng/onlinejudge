@@ -7,7 +7,7 @@
   g.column name: 'Problem name' do |problem|
     problem_text = h problem.name
     problem_text = "<del>#{problem_text}</del>" if problem.ok?(current_user)
-    link_to sanitize problem_text, problem
+    link_to (sanitize problem_text), problem
   end
 
   g.column name: 'Time limit', :class => "muted" do |problem|
