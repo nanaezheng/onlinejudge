@@ -10,6 +10,14 @@
     link_to (sanitize problem_text), problem
   end
 
+  g.column name: "Tags" do |problem|
+    tags = ""
+    problem.tags.each do |tag|
+      tags << (sanitize "<span =\"label label-info\">#{h tag}</span>")
+    end
+    tags
+  end
+
   g.column name: 'Time limit', :class => "muted" do |problem|
     "%.1f s" %[problem.time_limit / 1000.0]
   end

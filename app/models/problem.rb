@@ -1,5 +1,5 @@
 class Problem < ActiveRecord::Base
-  attr_accessible :code, :name, :task, :time_limit, :submissions
+  attr_accessible :code, :name, :task, :time_limit, :submissions, :tags_string, :tags
 
   validates :code, :presence => true, :uniqueness => true
   #validates :test_count, :presence => true
@@ -14,6 +14,14 @@ class Problem < ActiveRecord::Base
 
   def ok?(current_user)
     not submissions.where("user_id = ? AND status = 2", current_user.try(:id)).blank?
+  end
+
+  def tags
+    eval (self.tags_string || "[]")
+  end
+
+  def tags=(arrays)
+    self.tags_string = (arrays || []).to_s 
   end
 
   @@ATTRIBUTES = [:code, :name, :task, :time_limit]
