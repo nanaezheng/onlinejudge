@@ -13,7 +13,7 @@ class Problem < ActiveRecord::Base
   end
 
   def ok?(current_user)
-    not submissions.where("user_id = ? AND status = 2", current_user.id).blank?
+    not submissions.where("user_id = ? AND status = 2", current_user.try(:id)).blank?
   end
 
   @@ATTRIBUTES = [:code, :name, :task, :time_limit]
