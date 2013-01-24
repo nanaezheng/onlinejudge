@@ -6,7 +6,7 @@ LepusServer::Application.routes.draw do
   mathjax 'mathjax'
   resources :submissions
 
-  match 'problems', :controller => 'problems', :action => 'change', :method => :post
+  match 'problems', :controller => 'problems', :action => 'change', :via => :post
 
   resources :problems do
     member do
